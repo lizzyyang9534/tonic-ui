@@ -2,6 +2,7 @@ import { runIfFn } from '@tonic-ui/utils';
 import { ensureFunction } from 'ensure-type';
 import memoize from 'micro-memoize';
 import React, { forwardRef, useCallback, useEffect, useState } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
 import { Box } from '../box';
 import { useDefaultProps } from '../default-props';
 import config from '../shared/config';
@@ -11,7 +12,15 @@ import useAccordion from './useAccordion';
 
 const getMemoizedState = memoize(state => ({ ...state }));
 
-const AccordionItem = forwardRef((inProps, ref) => {
+export interface AccordionItemProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode | ((context: any) => ReactNode);
+  disabled?: boolean;
+  isExpanded?: boolean;
+  defaultIsExpanded?: boolean;
+  onToggle?: (data: { isExpanded: boolean }) => void;
+}
+
+const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((inProps, ref) => {
   const {
     children,
     disabled,
