@@ -34,9 +34,15 @@
     "@changesets/cli": "^2.27.7",
     "@commitlint/cli": "17.x",
     "@commitlint/config-conventional": "17.x",
+    "@types/node": "^18",
+    "@types/react": "^18",
     "@tonic-ui/changelog-github": "workspace:*",
     "husky": "8.x",
-    "lerna": "7.x"
+    "lerna": "7.x",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "ts-jest": "^29.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
   },
   "packageManager": "yarn@3.2.4"
 }
