@@ -1,12 +1,19 @@
 import { ariaAttr, callEventHandlers } from '@tonic-ui/utils';
 import { ensureBoolean } from 'ensure-type';
 import React, { forwardRef } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
 import { ButtonBase } from '../button';
 import { useDefaultProps } from '../default-props';
 import useAccordionItem from './useAccordionItem';
 import { useAccordionToggleStyle } from './styles';
 
-const AccordionToggle = forwardRef((inProps, ref) => {
+export interface AccordionToggleProps extends HTMLAttributes<HTMLButtonElement> {
+  children?: ReactNode | ((props: { getAccordionToggleProps: () => any }) => ReactNode);
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const AccordionToggle = forwardRef<HTMLButtonElement, AccordionToggleProps>((inProps, ref) => {
   const {
     children,
     disabled: disabledProp,

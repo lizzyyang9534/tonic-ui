@@ -3,6 +3,7 @@ import { ChevronDownIcon } from '@tonic-ui/react-icons';
 import { ariaAttr, createTransitionStyle, getEnterTransitionProps, getExitTransitionProps, reflow, transitionEasing } from '@tonic-ui/utils';
 import { ensureBoolean } from 'ensure-type';
 import React, { forwardRef, useEffect, useRef } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 import { Transition } from 'react-transition-group';
 import { Box } from '../box';
 import { useDefaultProps } from '../default-props';
@@ -40,7 +41,16 @@ const defaultTimeout = {
   exit: Math.floor(133 * 0.7),
 };
 
-const AccordionToggleIcon = forwardRef((inProps, ref) => {
+export interface AccordionToggleIconProps {
+  appear?: boolean;
+  children?: ReactNode | ((state: any, props: any) => ReactNode);
+  disabled?: boolean;
+  easing?: { enter: string; exit: string };
+  style?: CSSProperties;
+  timeout?: number | { enter?: number; exit?: number };
+}
+
+const AccordionToggleIcon = forwardRef<HTMLDivElement, AccordionToggleIconProps>((inProps, ref) => {
   const {
     appear = false, // do not perform the enter transition when it first mounts
     children,
