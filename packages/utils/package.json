@@ -12,7 +12,7 @@
   },
   "sideEffects": false,
   "scripts": {
-    "build": "cross-env rollup --config rollup.config.mjs",
+    "build": "tsc -p tsconfig.json && cross-env rollup --config rollup.config.mjs",
     "clean": "del build coverage dist",
     "lint": "eslint --ext .js,.jsx,.mjs .",
     "pre-push": "bash -c 'echo -e \"=> \\e[1;33m$npm_package_name\\e[0m\"' && yarn run build && yarn run lint && yarn run test",
@@ -43,12 +43,14 @@
     "eslint-plugin-react-hooks": "latest",
     "jest": "^29.0.0",
     "jest-environment-jsdom": "^29.0.0",
-    "rollup": "^3"
+    "rollup": "^3",
+    "typescript": "^5.8.3"
   },
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "<rootDir>/src/**/*.js"
+      "<rootDir>/src/**/*.js",
+      "<rootDir>/src/**/*.ts"
     ],
     "coverageReporters": [
       "lcov",
