@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "skipLibCheck": true
+  },
+  "files": [],
+  "references": [
+    { "path": "./packages/changelog-github" },
+    { "path": "./packages/codemod" },
+    { "path": "./packages/react-base" },
+    { "path": "./packages/react-docs" },
+    { "path": "./packages/react-hooks" },
+    { "path": "./packages/react-icons" },
+    { "path": "./packages/react" },
+    { "path": "./packages/styled-system" },
+    { "path": "./packages/theme" },
+    { "path": "./packages/utils" }
+  ]
+}

@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { codecovRollupPlugin } from '@codecov/rollup-plugin';
 import { babel } from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
 
 const pkg = createRequire(import.meta.url)('./package.json');
 const __filename = fileURLToPath(import.meta.url);
@@ -29,6 +30,7 @@ export default [
     external: isExternal,
     plugins: [
       nodeResolve(),
+      typescript({ tsconfig: path.resolve(__dirname, 'tsconfig.json') }),
       babel({ babelHelpers: 'bundled' }),
       // Put the Codecov rollup plugin after all other plugins
       codecovRollupPlugin({
@@ -48,6 +50,7 @@ export default [
     external: isExternal,
     plugins: [
       nodeResolve(),
+      typescript({ tsconfig: path.resolve(__dirname, 'tsconfig.json') }),
       babel({ babelHelpers: 'bundled' }),
       // Put the Codecov rollup plugin after all other plugins
       codecovRollupPlugin({
