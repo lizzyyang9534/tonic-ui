@@ -9,7 +9,7 @@ const pkg = createRequire(import.meta.url)('./package.json');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const input = path.resolve(__dirname, 'src', 'index.js');
+const input = path.resolve(__dirname, 'src', 'index.ts');
 const cjsOutputDirectory = path.resolve(__dirname, 'dist', 'cjs');
 const esmOutputDirectory = path.resolve(__dirname, 'dist', 'esm');
 const isExternal = id => !id.startsWith('.') && !id.startsWith('/');
@@ -28,7 +28,9 @@ export default [
     },
     external: isExternal,
     plugins: [
-      nodeResolve(),
+      nodeResolve({
+        extensions: ['.js', '.ts'],
+      }),
       babel({ babelHelpers: 'bundled' }),
       // Put the Codecov rollup plugin after all other plugins
       codecovRollupPlugin({
@@ -47,7 +49,9 @@ export default [
     },
     external: isExternal,
     plugins: [
-      nodeResolve(),
+      nodeResolve({
+        extensions: ['.js', '.ts'],
+      }),
       babel({ babelHelpers: 'bundled' }),
       // Put the Codecov rollup plugin after all other plugins
       codecovRollupPlugin({
