@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "esModuleInterop": true,
+    "target": "ES2019",
+    "moduleResolution": "node",
+    "strict": true,
+    "outDir": "dist/types",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*"]
+}
