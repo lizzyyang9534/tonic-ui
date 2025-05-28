@@ -1,0 +1,20 @@
+import system from '../core/system';
+import positiveOrNegativeTransform from '../transforms/positiveOrNegative';
+
+/**
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Shapes
+ */
+const group = 'shape';
+const config: any = {
+  shapeImageThreshold: true,
+  shapeMargin: {
+    property: 'shapeMargin',
+    scale: 'space',
+    transform: positiveOrNegativeTransform, // multi-value
+  },
+  shapeOutside: true,
+};
+
+const shape = system(config, { group });
+
+export default shape;
